@@ -1,29 +1,29 @@
-// Assignment code her
+//Variables
 var lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 var upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var numberList = ["1","2","3","4","5","6","7","8","9","0"];
 var spCharList = ["!","@","#","$","%","^","&","*","(",")","-","+","~"];
+//count variable in case pw length is longer than available string
 var count = 5;
 
-function getLength() {
+function generatePassword() {
   var pwLength = window.prompt("Please choose the length of your new password: Enter a number between 8 & 128.");
-  // debugger;
+  
   while (pwLength === "" || pwLength === null) {
-    return getLength();
+    return generatePassword();
   }
+
   var pwLong = parseInt(pwLength);
 
   if (pwLong < 8 || pwLong > 128) {
     window.alert("You need to pick a number between 8 & 128.");
-    return getLength();
+    return generatePassword();
   }
   console.log(pwLong);
   
   var lowerC = window.confirm("Would you like to include lower case letters?");
 
   if (lowerC) {
-    shuffle(lowerCase);
-    console.log(lowerCase);
     function counter () {
       count = count - 1;
     }
@@ -38,8 +38,6 @@ function getLength() {
   var upperC = window.confirm("Would you like to include upper case letters?");
 
   if(upperC) {
-    shuffle(upperCase);
-    console.log(upperCase);
     function counter () {
       count = count - 1;
     }
@@ -53,8 +51,6 @@ function getLength() {
   var numberL = window.confirm("Would you like to include numbers?");
  
   if (numberL) {
-    shuffle(numberList);
-    console.log(numberList);
     function counter () {
       count = count - 1;
     }
@@ -68,8 +64,6 @@ function getLength() {
   var spCharL = window.confirm("Would you like to confirm special characters (such as '!', '#', '%', etc)?");
 
   if(spCharL) {
-    shuffle(spCharList);
-    console.log(spCharList);
     function counter () {
       count = count - 1;
     }
@@ -80,10 +74,13 @@ function getLength() {
     spCharList = [""];
   }
 
-  var myPw = (lowerCase.join('') + upperCase.join('') + numberList.join('') + spCharList.join(''));
-
+  var myPw = lowerCase.concat(upperCase, numberList, spCharList);
+  
   shuffle(myPw);
-  console.log(myPw);
+
+  var myPw = myPw.join('');
+
+  // console.log("here's a shuffled pw " +myPw);
 
   function counter2() {
     if (pwLong >= myPw.length) {
@@ -104,14 +101,14 @@ function getLength() {
     for ( let i = 0; i < pwLong; i++) {
       finalPw += myPw.charAt(Math.floor(Math.random() * pwLong));
     }
-    shuffle(finalPw);
     console.log(finalPw);
     return finalPw;
   };
-  generateFinal();
+  
+  return generateFinal();
 };
 
-getLength();
+// getLength();
 
 //Fisher-Yates Shuffle function (https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 function shuffle(array) {
@@ -137,7 +134,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
