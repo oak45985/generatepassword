@@ -77,12 +77,17 @@ function getLength() {
 
   var myPw = (lowerCase + upperCase + numerals + spChar);
 
-  // function counter2() {
-  //   if (pwLong >= myPw) {
-  //     count = count
-  //   }
-  // }
-
+  function counter2() {
+    if (pwLong >= myPw.length) {
+      count = (pwLong * count) * .25;
+      myPw = myPw.repeat(count);
+    }
+    else {
+      count = "";
+    }
+  }
+  counter2();
+  console.log(count);
   console.log(myPw);
 
   //HEY CHRIS LOOK HERE
