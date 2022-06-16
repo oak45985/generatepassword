@@ -85,6 +85,7 @@ function getLength() {
 
   console.log(myPw);
 
+  //HEY CHRIS LOOK HERE
   function generateThatBitch() {
     let finalPw = "";
     for ( let i = 0; i < pwLong; i++) {
