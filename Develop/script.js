@@ -3,6 +3,7 @@ var lc = "abcdefghijklmnopqrstuvwxyz";
 var uc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var sc = "!@#$%^&*()+=";
 var nm = "123456790";
+var count = 5;
 
 function getLength() {
   var pwLength = window.prompt("Please choose the length of your new password: Enter a number between 1 & 128.");
@@ -22,6 +23,11 @@ function getLength() {
 
   if (lowerCase) {
     lowerCase = lc;
+    function counter () {
+      count = count - 1;
+    }
+    counter();
+    console.log(count);
   }
   else {
     lowerCase = "";
@@ -31,6 +37,11 @@ function getLength() {
 
   if(upperCase) {
     upperCase = uc;
+    function counter () {
+      count = count - 1;
+    }
+    counter();
+    console.log(count);
   }
   else {
     upperCase = "";
@@ -40,6 +51,11 @@ function getLength() {
 
   if (numerals) {
     numerals = nm;
+    function counter () {
+      count = count - 1;
+    }
+    counter();
+    console.log(count);
   }
   else {
     numerals = "";
@@ -49,6 +65,11 @@ function getLength() {
 
   if(spChar) {
     spChar = sc;
+    function counter () {
+      count = count - 1;
+    }
+    counter();
+    console.log(count);
   }
   else {
     spChar = "";
@@ -56,14 +77,23 @@ function getLength() {
 
   var myPw = (lowerCase + upperCase + numerals + spChar);
 
+  // function counter2() {
+  //   if (pwLong >= myPw) {
+  //     count = count
+  //   }
+  // }
+
   console.log(myPw);
 
   function generateThatBitch() {
-    var finalPw = myPw;
-
-    return finalPw[Math.floor(Math.random() * pwLong)];
-  }
-  console.log(generateThatBitch());
+    let finalPw = "";
+    for ( let i = 0; i < pwLong; i++) {
+      finalPw += myPw.charAt(Math.floor(Math.random() * pwLong));
+    }
+    console.log(finalPw);
+    return finalPw;
+  };
+  generateThatBitch();
 };
 
 getLength();
