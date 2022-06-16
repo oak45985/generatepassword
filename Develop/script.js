@@ -86,6 +86,7 @@ function getLength() {
       count = "";
     }
   }
+
   counter2();
   console.log(count);
   console.log(myPw);
