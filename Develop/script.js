@@ -7,9 +7,10 @@ var spCharList = ["!","@","#","$","%","^","&","*","(",")","-","+","~"];
 var count = 5;
 
 function generatePassword() {
+  // 
   var pwLength = window.prompt("Please choose the length of your new password: Enter a number between 8 & 128.");
   
-  while (pwLength === "" || pwLength === null) {
+  while (pwLength === "" || pwLength === null ) {
     return generatePassword();
   }
 
@@ -80,8 +81,6 @@ function generatePassword() {
 
   var myPw = myPw.join('');
 
-  // console.log("here's a shuffled pw " +myPw);
-
   function counter2() {
     if (pwLong >= myPw.length) {
       count = (pwLong * count) * .25;
@@ -107,8 +106,6 @@ function generatePassword() {
   
   return generateFinal();
 };
-
-// getLength();
 
 //Fisher-Yates Shuffle function (https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 function shuffle(array) {
